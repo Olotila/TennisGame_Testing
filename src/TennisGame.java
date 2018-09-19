@@ -15,11 +15,20 @@ public class TennisGame {
 	}
 	
 	private void checkGameEnded() {
-		if (player1Points>=4 && player1Points-player2Points>=2)
+		if (player1Points>=4 && player1Points>=player2Points+2)
 			gameEnded = true;
-		else if (player2Points>=4 && player2Points-player1Points>=2)
+		else if (player2Points>=4 && player2Points>=player1Points+2)
 			gameEnded = true;
 	}
+	
+//	private boolean peliRatkesi() {
+//		if (p2 >= 4 && p2 >= p1 + 2)
+//			return true;
+//		if (p1 >= 4 && p1 >= p2 + 2)
+//			return true;
+//		return false;
+//	}
+	
 	
 	private String getScore(int points) {
 		switch (points)	{
@@ -27,8 +36,9 @@ public class TennisGame {
 		case 1: return "15" ;
 		case 2: return "30" ;
 		case 3: return "40";
-		default: return "40" ;
+//		default: return "40" ;
 		} 		
+		return null;
 	}
 	
 	public void player1Scored() throws TennisGameException {
@@ -83,7 +93,7 @@ public class TennisGame {
 			if (player1Points >= 4 && player1Points - player2Points == 1)
 				return "player1 has advantage";
 			
-			if (player2Points > 4 && player2Points - player1Points == 1)
+			if (player2Points >= 4 && player2Points - player1Points == 1)
 				return "player2 has advantage";							
 			
 			return  player2Score + " - " + player1Score ;
